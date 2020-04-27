@@ -1,7 +1,5 @@
-# sensiboAlert | https://github.com/ora/
-# This will check Sensibo API and alert if sensibo is offline or temperature falls below x
-# Get your Sensibo API key here: https://home.sensibo.com/login?next=/me/api
-# Add the API key below, along with send to email address and SendGrid API key (100 emails a day are free)
+# https://github.com/ora/sensiboAlert
+# This will check Sensibo API & alert via email (SendGrid) if Sensibo is offline or temperature falls
 
 import requests
 from sendgrid.helpers.mail import Mail
