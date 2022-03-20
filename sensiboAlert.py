@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # https://github.com/ora/sensiboAlert
 # This will check Sensibo API & alert via email (SendGrid) if Sensibo is offline or temperature falls
 
@@ -30,7 +32,7 @@ def sendMail(alert_body):
 	print(response.status_code)
 	print(response.body)
 	print(response.headers)
-	
+
 if ((data["result"][0]["connectionStatus"]["isAlive"]) == 0):
 	sendMail("<strong>Sensibo is offline<strong>")
 
