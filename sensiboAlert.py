@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
 # https://github.com/ora/sensiboAlert
-# This will check Sensibo API & alert via email (SendGrid) if Sensibo is offline or temperature falls
+# This will check Sensibo API & alert via email (SendGrid) if Sensibo is
+# offline or temperature falls
 
 import requests
 from sendgrid.helpers.mail import Mail
@@ -12,7 +13,8 @@ sg_apiKey = "SENDGRID APIKEY"
 sendTo = "EMAIL ADDRESS"
 
 resp = requests.get(
-    "https://home.sensibo.com/api/v2/users/me/pods?fields=connectionStatus{isAlive},measurements&apiKey=%s" % (sensibo_apiKey))
+    "https://home.sensibo.com/api/v2/users/me/pods?fields=connectionStatus{isAlive},measurements&apiKey=%s" %
+    (sensibo_apiKey))
 
 if not resp:
     print("%s: Exiting" % resp.status_code)
@@ -29,8 +31,11 @@ print("Temperature:", temperature)
 
 
 def sendMail(alert_body):
-    message = Mail(from_email='sensibo_alert@no_reply.com',
-                   to_emails=sendTo, subject='Sensibo Alert', html_content=alert_body)
+    message = Mail(
+        from_email='sensibo_alert@no_reply.com',
+        to_emails=sendTo,
+        subject='Sensibo Alert',
+        html_content=alert_body)
     sg = SendGridAPIClient(sg_apiKey)
     response = sg.send(message)
     print(response.status_code)
